@@ -1,0 +1,15 @@
+[submodule "discoverd"]
+	path = discoverd
+	url = https://github.com/flynn/discoverd.git
+[submodule "flynn-host"]
+	path = flynn-host
+	url = https://github.com/flynn/flynn-host.git
+[submodule "flynn-controller"]
+	path = flynn-controller
+	url = https://github.com/flynn/flynn-controller.git
+[submodule "flynn-bootstrap"]
+	path = flynn-bootstrap
+	url = https://github.com/flynn/flynn-bootstrap.git
+[submodule "flynn-cli"]
+	path = flynn-cli
+	url = https://github.com/flynn/flynn-cli.git
