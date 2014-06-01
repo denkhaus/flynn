@@ -1,0 +1,24 @@
+#! /bin/bash
+
+
+docker pull flynn/host
+docker pull flynn/discoverd
+docker pull flynn/etcd                    
+docker pull flynn/postgres
+docker pull flynn/controller
+docker pull flynn/gitreceive
+docker pull flynn/strowger
+docker pull flynn/shelf
+docker pull flynn/slugrunner
+docker pull flynn/slugbuilder
+docker pull flynn/bootstrap
+
+
+IP_ADDR=$(/sbin/ifconfig $1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
+echo "Configuring flynn with internal ip: ${IP_ADDR}"
+
+echo "startup flynn/host"             
+docker run -d -v=/var/run/docker.sock:/var/run/docker.sock -p=1113:1113 flynn/host -external ${IP_ADDR} -force
+sleep 10
+echo "execute flynn/bootstrap"
+docker run -e=DISCOVERD=${IP_ADDR}:1111 flynn/bootstrap
