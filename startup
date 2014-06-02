@@ -1,6 +1,5 @@
 #! /bin/bash
-
-
+echo "pull images"
 docker pull flynn/host
 docker pull flynn/discoverd
 docker pull flynn/etcd                    
@@ -12,7 +11,6 @@ docker pull flynn/shelf
 docker pull flynn/slugrunner
 docker pull flynn/slugbuilder
 docker pull flynn/bootstrap
-
 
 IP_ADDR=$(/sbin/ifconfig $1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 echo "Configuring flynn with internal ip: ${IP_ADDR}"
